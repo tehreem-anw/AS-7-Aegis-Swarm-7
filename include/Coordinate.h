@@ -16,7 +16,7 @@ public:
     void display() const;
 
     // Operator Overloading (Useful for shifting intercept points)
-    Coordinate operator+(const Coordinate& other) const;
+    Coordinate operator + (const Coordinate& other) const;
     bool operator==(const Coordinate& other) const;
     
     // Getters
