@@ -6,6 +6,8 @@
 
 using namespace std;
 
+class Interceptor;
+
 // Abstract Base Class for threat units
 class Threat {
 protected:
@@ -26,6 +28,9 @@ public:
 
     // Shared display logic
     virtual void displayThreatInfo() const;
+
+    // Friend Function: For collision logic (Links Threat & Interceptor)
+    friend bool checkCollision(const Threat& target, const Interceptor& drone);
 
     // Getters
     string getID() const { return threatID; }
