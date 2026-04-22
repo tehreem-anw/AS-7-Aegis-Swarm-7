@@ -4,6 +4,8 @@
 #include "Coordinate.h"
 using namespace std;
 
+class Threat;
+
 // Abstract Base Class for interceptor units
 class Interceptor {
 protected:
@@ -24,6 +26,9 @@ public:
 
     // Shared display logic for all interceptors
     virtual void displayInterceptorInfo() const;
+
+    // Friend Function: For collision logic (Links Threat & Interceptor)
+    friend bool checkCollision(const Threat& target, const Interceptor& drone);
 
     // Getters
     string getID() const { return unitID; }
