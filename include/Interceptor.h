@@ -5,6 +5,7 @@
 using namespace std;
 
 class Threat;
+class IntelMessage;
 
 // Abstract Base Class for interceptor units
 class Interceptor {
@@ -26,6 +27,10 @@ public:
 
     // Shared display logic for all interceptors
     virtual void displayInterceptorInfo() const;
+
+    // Functions for communication logic
+    virtual void receiveMessage(const IntelMessage& msg); 
+	void sendMessage(IntelMessage& msg, CommandCenter& center);
 
     // Friend Function: For collision logic (Links Threat & Interceptor)
     friend bool checkCollision(const Threat& target, const Interceptor& drone);
