@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Abstract Base Class
+// Abstract Base Class for threat units
 class Threat {
 protected:
     string threatID;
