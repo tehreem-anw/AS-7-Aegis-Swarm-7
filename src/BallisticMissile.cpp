@@ -1,6 +1,7 @@
 #include "BallisticMissile.h"
 using namespace std;
 
+// Parametrized Constructor
 BallisticMissile::BallisticMissile(string id, Coordinate pos, TargetProfile prof, double s): Threat(id, pos, prof, s) {}
 
 void BallisticMissile::calculateTrajectory() {
