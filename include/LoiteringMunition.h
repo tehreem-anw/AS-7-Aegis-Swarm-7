@@ -4,6 +4,7 @@ using namespace std;
 
 class LoiteringMunition : public Threat {
 public:
+    // Calls base Threat constructor
     LoiteringMunition(string id, Coordinate pos, TargetProfile prof, double s);
 
     // Implements low-speed zig-zag movement
