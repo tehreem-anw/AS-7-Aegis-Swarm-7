@@ -25,6 +25,9 @@ public:
     // Pure Virtual Function: Each drone behaves differently
     virtual void updatePosition() = 0;
 
+	//Pure Vurtial Function: Determines if the unit is destroyed upon successful engagement
+	virtual bool isExpendable() const = 0;
+
     // Shared display logic for all interceptors
     virtual void displayInterceptorInfo() const;
 
@@ -40,6 +43,7 @@ public:
     Coordinate getPosition() const { return currentPosition; }
     double getSpeed() const { return speed; }
     bool getStatus() const { return isActive; }
-    
+
+	// Setters
     void setStatus(bool status) { isActive = status; }
 };
