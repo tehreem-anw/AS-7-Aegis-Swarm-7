@@ -10,4 +10,6 @@ public:
 
     // Overrides updatePosition to implement intercept logic
     void updatePosition() override;
+    // Overrides isExpendable to implement destroy logic
+    bool isExpendable() const override { return true; } // It crashes, so it dies
 };
