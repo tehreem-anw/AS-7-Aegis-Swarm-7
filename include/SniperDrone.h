@@ -10,7 +10,7 @@ public:
 
     // Overrides updatePosition; note that this unit is stationary
     void updatePosition() override;
-
+    
     // Overrides isExpendable to implement destroy logic
-    bool isExpendable() const override { return false; } // Emits signal, survives
+    bool isExpendable() const override;
 };
