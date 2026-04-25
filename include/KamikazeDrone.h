@@ -10,10 +10,10 @@ public:
 
     // Overrides updatePosition to implement intercept logic
     void updatePosition() override;
-
+    
     // Overrides receiveMessage to implement Location Shield logic
     void receiveMessage(const IntelMessage& msg) override;
-
+    
     // Overrides isExpendable to implement destroy logic
-    bool isExpendable() const override { return true; } // It crashes, so it dies
+    bool isExpendable() const override;
 };
