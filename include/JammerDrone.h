@@ -10,7 +10,7 @@ public:
 
     // Overrides updatePosition to implement jamming proximity logic
     void updatePosition() override;
-
+    
     // Overrides isExpendable to implement destroy logic
-    bool isExpendable() const override { return false; } // Emits signal, survives
+    bool isExpendable() const override;
 };
