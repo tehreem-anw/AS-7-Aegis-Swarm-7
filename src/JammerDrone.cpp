@@ -2,9 +2,9 @@
 using namespace std;
 
 // Parametrized Constructor
-JammerDrone::JammerDrone(string id, Coordinate pos, double s): Interceptor(id, pos, s) {}
+JammerDrone::JammerDrone(string id, Coordinate pos, double s, Battery b, SensorArray sen): Interceptor(id, pos, s, b, sen) {}
 
-bool isExpendable() const override { return false; } // Emits signal, survives
+bool JammerDrone::isExpendable() const { return false; } // Emits signal, survives
 
 // Implements movement logic for electronic "soft kill" positioning
 void JammerDrone::updatePosition() {
