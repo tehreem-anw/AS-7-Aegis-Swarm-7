@@ -74,10 +74,49 @@ void CommandCenter::updateSystem() {
     for (int i = 0; i < engagementCount; i++) {
         if (activeEngagements[i] == nullptr) continue;
 
-        // Run the tactical tick
+        // 1. Run the tactical tick
         activeEngagements[i]->executeTacticalTick(protectedSites, siteCount);
 
-        // If the threat is resolved, clean up the engagement
+		// 2. THE HANDOVER LOGIC: Check for battery alerts
+        for (int d=0; d<activeEngagements[i]->getSwarmSize(); d++) {
+            Interceptor* currentDrone = activeEngagements[i]->getDrone(d);
+
+            if (currentDrone != nullptr && currentDrone->isLowOnPower()) {
+                cout<<"[ALERT]: Drone "<<currentDrone->getID()<<" battery low! Initiating Handover."<<endl;
+
+                // Step A: Find out what type we need (First 3 chars: "KAM", "SNP", "JAM")
+                string typeNeeded = currentDrone->getID().substr(0, 3);
+                Interceptor* freshReplacement = nullptr;
+                int replacementIndex = -1;
+
+                // Step B: Search Hangar for a fresh drone of the same type
+                for (int k=0; k<droneCount; k++) {
+                    if (availableDrones[k]->getID().substr(0, 3) == typeNeeded && !availableDrones[k]->isLowOnPower()) {
+                        freshReplacement = availableDrones[k];
+                        replacementIndex = k;
+                        break;
+                    }
+                }
+
+                // Step C: If we found a fresh drone, swap them
+                if (freshReplacement != nullptr) {
+                    cout<<"[HANDOVER]: Swapping "<<currentDrone->getID()<<" with "<<freshReplacement->getID()<<endl;
+                    
+                    // Call the function you were asking about!
+                    activeEngagements[i]->replaceDrone(d, freshReplacement);
+
+                    // Put the old drone back in the hangar (to be "recharged")
+                    currentDrone->setStatus(false); // Set to Inactive/RTB
+                    availableDrones[replacementIndex] = currentDrone; 
+                    
+                    // Note: In a real sim, you'd recharge it here
+                } else {
+                    cout<<"[CRITICAL]: No fresh "<<typeNeeded<<" units available in hangar!"<<endl;
+                }
+            }
+        }
+
+        // 3. If the threat is resolved, clean up the engagement
         if (activeEngagements[i]->getStatus()) {
             cout<<"[COMMAND]: Engagement "<<i<<" resolved. Clearing memory."<<endl;
             delete activeEngagements[i];
