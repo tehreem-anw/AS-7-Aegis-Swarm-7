@@ -1,4 +1,4 @@
-# AS-7: Aegis Swarm-7
+# AS-7: AegisSwarm-7
 *Autonomous Drone Swarm Defense System*
 
 ---
