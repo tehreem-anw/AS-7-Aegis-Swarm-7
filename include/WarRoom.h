@@ -10,11 +10,16 @@ class WarRoom {
 private:
     CommandCenter hq;               // Composition: The WarRoom owns the Command Center
     bool isSimulationActive;
-    int clockTick;                  // Tracks the "seconds" of the battle
-
+    int clockTick;                  // Clock: Each second of the battle
+	Threat* spawnedThreats[10];  
+    int threatCount;
+	
 public:
     // Constructor
     WarRoom();
+    
+    // Destructor
+    ~WarRoom();
 
     // Setup Functions
     void initializeDefenseGrid();
