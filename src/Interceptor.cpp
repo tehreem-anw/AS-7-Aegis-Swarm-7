@@ -4,15 +4,20 @@
 using namespace std;
 
 // Parametrized Constructor: Initializes identity, position, and active status
-Interceptor::Interceptor(string id, Coordinate pos, double s): unitID(id), currentPosition(pos), speed(s), isActive(true) {}
+Interceptor::Interceptor(string id, Coordinate pos, double s, Battery b, SensorArray sen): unitID(id), currentPosition(pos), speed(s), isActive(true), unitBattery(b), onboardSensors(sen) {}
 
 // Displays status details of the interceptor
 void Interceptor::displayInterceptorInfo() const {
     cout<<"Unit ID: "<<unitID<<" | Speed: "<<speed<<" m/s"<<endl;
-    cout<<"Status: "<<(isActive ? "Active" : "Inactive")<<endl;
+    cout<<"Status: "<<(isActive ? "Active" : "Inactive")<<" | Battery: "<<unitBattery.getCharge()<<endl;
     cout<<"Current Position: ";
     currentPosition.display();
     cout<<endl;
+}
+
+// Updating each drone's battery status
+void Interceptor::drainEnergy(double amount) {
+    unitBattery.consumePower(amount);
 }
 
 // Base implementation: Most drones just log the message
