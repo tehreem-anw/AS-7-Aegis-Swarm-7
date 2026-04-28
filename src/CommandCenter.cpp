@@ -98,18 +98,16 @@ void CommandCenter::updateSystem() {
                     }
                 }
 
-                // Step C: If we found a fresh drone, swap them
+                // Step C: If fresh drone found, swap them
                 if (freshReplacement != nullptr) {
                     cout<<"[HANDOVER]: Swapping "<<currentDrone->getID()<<" with "<<freshReplacement->getID()<<endl;
                     
-                    // Call the function you were asking about!
                     activeEngagements[i]->replaceDrone(d, freshReplacement);
 
                     // Put the old drone back in the hangar (to be "recharged")
-                    currentDrone->setStatus(false); // Set to Inactive/RTB
+                    currentDrone->setStatus(false); // Set to Inactive
                     availableDrones[replacementIndex] = currentDrone; 
                     
-                    // Note: In a real sim, you'd recharge it here
                 } else {
                     cout<<"[CRITICAL]: No fresh "<<typeNeeded<<" units available in hangar!"<<endl;
                 }
@@ -126,7 +124,7 @@ void CommandCenter::updateSystem() {
                 activeEngagements[j] = activeEngagements[j + 1];
             }
             activeEngagements[--engagementCount] = nullptr;
-            i--; // Check the "new" engagement at this index
+            i--; 
         }
     }
 }
