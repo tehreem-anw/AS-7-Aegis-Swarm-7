@@ -2,9 +2,9 @@
 using namespace std;
 
 // Parametrized Constructor
-SniperDrone::SniperDrone(string id, Coordinate pos, double s): Interceptor(id, pos, s) {}
+SniperDrone::SniperDrone(string id, Coordinate pos, double s, Battery b, SensorArray sen): Interceptor(id, pos, s, b, sen) {}
 
-bool isExpendable() const override { return false; } // Shoots laser, survives
+bool SniperDrone::isExpendable() const { return false; } // Shoots laser, survives
 
 // Implements behavior for the stationary sniper unit
 void SniperDrone::updatePosition() { 
