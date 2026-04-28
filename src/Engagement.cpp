@@ -38,9 +38,6 @@ void Engagement::executeTacticalTick(Infrastructure* protectedSites[], int siteC
     for (int i = 0; i < swarmSize; i++) {
         if (assignedSwarm[i]->getStatus()) {
             assignedSwarm[i]->updatePosition();
-
-			// --- ADDED FOR TESTING: ENERGY DRAIN ---
-            // This forces the Handover logic to trigger by Tick 4
             assignedSwarm[i]->drainEnergy(25.0);
 
             // 1. Check if they have met in the sky
