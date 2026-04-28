@@ -3,7 +3,6 @@
 #include <string>
 #include "Coordinate.h"
 #include "TargetProfile.h"
-
 using namespace std;
 
 class Interceptor;
