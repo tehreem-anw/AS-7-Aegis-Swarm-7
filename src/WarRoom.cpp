@@ -30,7 +30,7 @@ void WarRoom::initializeDefenseGrid() {
     Battery standardBattery(100.0); // 100% charge, not low power
     SensorArray standardSensors(0.95f, "Active"); // 95% precision
     
-    // Load 5 Kamikazes, 2 Snipers, 3 Jammers
+    // Load 15 Kamikazes, 2 Snipers, 3 Jammers
     for(int i = 0; i < 15; i++) {
         hq.registerDrone(new KamikazeDrone("KAM-" + to_string(i+1), Coordinate(0,0,0), 100.0, standardBattery, standardSensors));
     }
