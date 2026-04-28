@@ -67,7 +67,7 @@ void WarRoom::spawnThreatWave() {
 void WarRoom::runSimulation() {
     cout<<"\n=== AS-7 SIMULATION STARTED (TACTICAL OVERVIEW) ==="<<endl;
     while (isSimulationActive && clockTick < 10) { 
-        cout<<"\n--- CLOCK TICK: "<<clockTick<<" ---"<<endl;
+        cout<<"\n--- CLOCK TICK: "<<clockTick+1<<" ---"<<endl;
         
         hq.updateSystem(); // Triggers tactical updates and collision checks
         clockTick++;
