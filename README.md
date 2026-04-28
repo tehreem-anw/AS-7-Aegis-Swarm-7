@@ -2,8 +2,7 @@
 *Autonomous Drone Swarm Defense System*
 
 ---
-# AegisSwarm-7 (AS-7)
-
+### Objective
 AegisSwarm-7 (AS-7) is a C++ simulation designed to revolutionize air defense through decentralized, autonomous drone swarms. Shifting away from traditional, stationary, and "single-brain" radar systems, AS-7 implements a distributed intelligence model to act as a resilient Digital Shield against modern aerial threats.
 
 The system is specifically engineered to address the "cost-asymmetry" of modern warfare—using low-cost, smart interceptors to neutralize expensive ballistic threats and loitering munitions while safeguarding critical civilian infrastructure.
