@@ -37,14 +37,14 @@ void CommandCenter::handleIncomingThreat(Threat* threat) {
     string requiredType = "";
 
     if (risk >= 9) {
-        dronesNeeded = 5; // You wanted 5 for BM-67
-        requiredType = "KAM";
+        dronesNeeded = 5; 	
+        requiredType = "KAM";	// 5 kamikazes for a high-speed ballistic missile
     } else if (risk >= 5) {
-        dronesNeeded = 1;
-        requiredType = "SNP";
+        dronesNeeded = 1;	
+        requiredType = "SNP";	// 1 sniper for a mid-tier loitering munition
     } else {
         dronesNeeded = 1;
-        requiredType = "JAM";
+        requiredType = "JAM";	// 1 jammer for a low-risk electronic decoy
     }
 
     cout << "[COMMAND]: Deploying " << dronesNeeded << " " << requiredType << " units for Threat " << threat->getID() << endl;
