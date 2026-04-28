@@ -2,13 +2,15 @@
 #include "IntelMessage.h"
 using namespace std;
 
-KamikazeDrone::KamikazeDrone(string id, Coordinate pos, double s): Interceptor(id, pos, s) {}
+KamikazeDrone::KamikazeDrone(string id, Coordinate pos, double s, Battery b, SensorArray sen): Interceptor(id, pos, s, b, sen) {}
 
 bool KamikazeDrone::isExpendable() const { return true; } // Crashes, so it dies
 
 void KamikazeDrone::updatePosition() {
-    // Moves directly toward the high-speed threat coordinates
-    cout<<"[STATUS]: Kamikaze Drone "<<unitID<<" accelerating for interception."<<endl;
+    // Actual math: Move forward by (speed * 0.1) every tick
+    double nextX = currentPosition.getX() + (speed * 0.1);
+    currentPosition.setCoordinates(nextX, currentPosition.getY(), currentPosition.getZ());
+    cout<<"[STATUS]: Kamikaze Drone "<<unitID<<" at X: "<<currentPosition.getX()<<" accelerating..."<<endl;
 }
 
 void KamikazeDrone::receiveMessage(const IntelMessage& msg) {
